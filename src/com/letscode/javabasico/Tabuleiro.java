@@ -18,34 +18,36 @@ public class Tabuleiro {
     }
 
     public static void exibirTabuleiro(String nomeDoJogador, char[][] tabuleiro){
-        System.out.println("|------- " + nomeDoJogador + " -------|");
-        System.out.println("--------------------------");
+        System.out.println("|------------------ " + nomeDoJogador + " -----------------|");
+        System.out.println("---------------------------------------------");
+        System.out.println("|   | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
+        System.out.println("---------------------------------------------");
         char letraDaLinha = 65;
         String linhaDoTabuleiro = "";
 
         for (char[] linha: tabuleiro) {
-            linhaDoTabuleiro = "| "+(letraDaLinha++) + " |";
+            linhaDoTabuleiro = "| "+(letraDaLinha++) + " | ";
 
             for (char coluna : linha) {
                 switch(coluna) {
                     case VAZIO :
-                        linhaDoTabuleiro += " |";
+                        linhaDoTabuleiro += "  | ";
                         break;
                     case NAVIO :
-                       linhaDoTabuleiro += " N|";
+                       linhaDoTabuleiro += " N |";
                        break;
 
                     case ERROU_TIRO :
-                        linhaDoTabuleiro += "-|";
+                        linhaDoTabuleiro += " - |";
                         break;
 
                     case ACERTOU_TIRO :
-                        linhaDoTabuleiro += "*|";
+                        linhaDoTabuleiro += " * |";
                         break;
                 }
             }
             System.out.println(linhaDoTabuleiro);
-            System.out.println("--------------------------");
+            System.out.println("---------------------------------------------");
             
         }
         
