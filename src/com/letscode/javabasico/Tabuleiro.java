@@ -11,7 +11,7 @@ public class Tabuleiro {
     public static void gerarTabuleiroVazio(char[][] tabuleiro){
         for (int i=0; i <10;i++) {
             for (int j = 0; j < 10; j++) {
-                tabuleiro[i][j]=20;
+                tabuleiro[i][j]=66;
             }
 
         }
