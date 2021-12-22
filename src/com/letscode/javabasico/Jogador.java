@@ -17,7 +17,7 @@ public class Jogador {
         this.nome = nome;
     }
     public void atirar(char fila, char coluna){
-        tabuleiro.tabuleiro[fila][coluna] =42;
+        tabuleiro.tabuleiro[fila][coluna] =45;
         tabuleiro.exibirTabuleiro(getNome());
     }
 }
