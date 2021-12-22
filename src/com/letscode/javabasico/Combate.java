@@ -14,16 +14,8 @@ public class Combate {
     public void iniciarCombate() {
         obterNomeDosJogadores();
         posicionarNavios();
+        verificarTiro();
 
-//        jogador.tabuleiro.gerarTabuleiroVazio();
-//        jogador.tabuleiro.exibirTabuleiro(jogador.getNome());
-//        // é uma prova
-//        jogador.atirar((char) 1, (char) 3);
-//        jogador.atirar((char) 0, (char) 9);
-//        jogador.atirar((char) 0, (char) 0);
-//        //meuTabuleiro.
-
-        //Enquando não houver ganhador, o jogo avança
     }
 
     public void obterNomeDosJogadores() {
@@ -48,19 +40,46 @@ public class Combate {
 
     }
 
-    public void posicionarNaviosAleatoriamente(){
+    public static char[][] posicionarNaviosAleatoriamente() {
+        char novoTabuleiro[][] = Tabuleiro.gerarTabuleiroVazio();
         int quantidadeDeNavios = 10;
-        int linha, coluna;
-
-
-        do {
-
-        } while (quantidadeDeNavios > 0);
-
+        int linha = 0;
+        int coluna= 0;
+        Random numeroAleatorio = new Random();
+        for (int navio = 0; navio <10; navio++){
+            linha = numeroAleatorio.nextInt(10-1+1)+1;
+            coluna = numeroAleatorio.nextInt(10-1+1)+1;;
+            novoTabuleiro[linha][coluna] = 'N';
+        }
+        return novoTabuleiro;
     }
 
     public void posicionarNaviosComJogador() {
+        boolean inputLinha = false;
+        boolean inputColuna = false;
+        char linhaDoTabuleiro = 'k';
+        char colunaDoTabuleiro = 'k';
+        for (int navio = 0; navio <10; navio++){
+            while (linhaDoTabuleiro >= 'A' || linhaDoTabuleiro <= 'J'){
+                if (inputLinha) {
+                    System.out.println("Informe a linha desejada entre as letras A e J.");
+                }
+                System.out.println("Informe a linha para atirar: A-J");
+                linhaDoTabuleiro = input.next().charAt(0);
+                inputLinha = true;
+            }
+            while (colunaDoTabuleiro >= '0' || colunaDoTabuleiro <= '9'){
+                if (inputColuna) {
+                    System.out.println("Informe a coluna desejada entre os números 0 e 9.");
+                }
+                System.out.println("Informe a coluna para atirar: 0-9");
+                colunaDoTabuleiro = input.next().charAt(0);
+                inputColuna = true;
+            }
+        }
+    }
 
+    private void verificarTiro() {
     }
 
 }
