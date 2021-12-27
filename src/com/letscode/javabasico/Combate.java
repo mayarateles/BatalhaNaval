@@ -12,23 +12,23 @@ public class Combate {
     Random random = new Random();
 
     public void iniciarCombate() {
-        obterNomeDosJogadores();
+        //obterNomeDosJogadores();
         posicionarNavios();
-        verificarTiro();
+        //verificarTiro();
 
     }
 
-    public void obterNomeDosJogadores() {
-        System.out.println("Qual é o seu nome? ");
-        humano.setNomeDoJogador(input.next());
-        computador.setNomeDoJogador("computador");
-    }
-
+//    public void obterNomeDosJogadores() {
+//        System.out.println("Qual é o seu nome? ");
+//        humano.setNomeDoJogador(input.next());
+//        computador.setNomeDoJogador("computador");
+//    }
+//
     public void posicionarNavios() {
         System.out.println("Como deseja posicionar seus navios? ");
         System.out.println("Opção 1 - Aleatório");
         System.out.println("Opção 2 - Manual");
-        char opcao = input.next().charAt(0);
+        int opcao = input.nextInt();
 
         if (opcao == 1) {
             posicionarNaviosAleatoriamente();
@@ -41,14 +41,14 @@ public class Combate {
     }
 
     public static char[][] posicionarNaviosAleatoriamente() {
-        char novoTabuleiro[][] = Tabuleiro.gerarTabuleiroVazio();
+        char[][] novoTabuleiro = Tabuleiro.gerarTabuleiroVazio();
         int quantidadeDeNavios = 10;
         int linha = 0;
         int coluna= 0;
         Random numeroAleatorio = new Random();
         for (int navio = 0; navio <10; navio++){
-            linha = numeroAleatorio.nextInt(10-1+1)+1;
-            coluna = numeroAleatorio.nextInt(10-1+1)+1;;
+            linha = 0 + numeroAleatorio.nextInt((9 - 0) + 1);
+            coluna = 0 + numeroAleatorio.nextInt((9 - 0) + 1);
             novoTabuleiro[linha][coluna] = 'N';
         }
         return novoTabuleiro;
@@ -79,7 +79,8 @@ public class Combate {
         }
     }
 
-    private void verificarTiro() {
+    public void verificarTiro(){
+
     }
 
 }

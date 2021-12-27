@@ -22,7 +22,7 @@ public class Main {
 
         if (opcao == 1) {
             Combate combate = new Combate();
-
+            combate.iniciarCombate();
         } else if (opcao == 2) {
             System.out.println("Espero revê-lo em breve.");
         } else {
