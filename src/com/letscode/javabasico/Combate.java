@@ -42,6 +42,7 @@ public class Combate {
 
     public static char[][] posicionarNaviosAleatoriamente() {
         char novoTabuleiro[][] = Tabuleiro.gerarTabuleiroVazio();
+
         int quantidadeDeNavios = 10;
         int linha = 0;
         int coluna= 0;
