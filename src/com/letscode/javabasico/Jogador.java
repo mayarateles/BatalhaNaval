@@ -26,7 +26,7 @@ public class Jogador {
         this.nomeDoJogador = nomeDoJogador;
     }
 
-    public void atirar(char linha, char coluna){
+    public void tiroHumano (char linha, char coluna){
         System.out.println("Informe a linha que deseja atirar: ");
         linha = input.next().charAt(0);
         System.out.println("Informe a coluna que deseja atirar: ");
@@ -34,6 +34,11 @@ public class Jogador {
 
         tabuleiro.tabuleiro[linha][coluna] =45;
         tabuleiro.exibirTabuleiro(getNomeDoJogador());
+    }
+
+    public void tiroComputador(){
+        Random jogadaDoComputador = new Random();
+
     }
 
 }
