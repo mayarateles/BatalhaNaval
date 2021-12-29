@@ -1,5 +1,6 @@
 /out/
 .idea
+.class
 *.iml
 /shelf/
 /workspace.xml
