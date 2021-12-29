@@ -36,6 +36,7 @@ public class TabuleiroHumano {
             tabuleiroHumano[i][aleatorio.nextInt(10)]='N';
         }
     }
+    
     public void gerarTabuleiroManual() {
         gerarTabuleiroVazio();
         Scanner input = new Scanner(System.in);
@@ -47,7 +48,7 @@ public class TabuleiroHumano {
             System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
             validar = input.next();
                 if(!validar.matches("[0-9]*")) {
-                	System.out.println("Por favor, insira um n�mero v�lido.");
+                	System.out.println("-----Por favor, insira um n�mero v�lido.-----");
                 	validar = "";
                 }else {
                 	posicao = Integer.parseInt(validar);
@@ -55,7 +56,7 @@ public class TabuleiroHumano {
 
                         if (posicao < 0 || posicao > 9) {
                             System.out.println("posição não valida");
-                            System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+                            System.out.printf("Em qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
                             posicao = input.nextInt();
                         }
                     }while (posicao < 0 || posicao > 9);
@@ -114,8 +115,13 @@ public class TabuleiroHumano {
         // System.out.println(getNavios());
     }
     public void verificarTiro(int fila, int coluna, TabuleiroComputador computador){//
-        fila-=65;
-        coluna -=48;
+    	if(fila >= 65 && fila <= 74) {
+    		fila -= 65;
+    	}else {
+    		fila -= 97;
+    	}
+   		coluna -= 48;
+        
         if (computador.tabuleiroComputador[fila][coluna]==NAVIO){
             if (tabuleiroHumano[fila][coluna]==NAVIO){
                 tabuleiroHumano[fila][coluna] = ACERTOU_TIRO_NAVIO_POSICIONADO;

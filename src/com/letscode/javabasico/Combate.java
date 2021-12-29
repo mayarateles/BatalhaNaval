@@ -46,7 +46,7 @@ public class Combate {
                     tiroFila = input.next().charAt(0);
 
                     //mensagem para quando no seja valido
-                }while (tiroFila < 65 || tiroFila>74);
+                }while (!(tiroFila >= 65 && tiroFila <= 74) && !(tiroFila <= 106 && tiroFila >= 97));
 
                 do {//obter e validar tiro fila
                     System.out.println("Em que coluna deseja Atirar?(só valores entre 0-9):");
