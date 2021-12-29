@@ -1,86 +1,72 @@
 package com.letscode.javabasico;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Combate {
 
-    Jogador humano = new Jogador();
-    Jogador computador = new Jogador();
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String opcao = "X";
+        char tiroFila;//65-74 ou 97-106
+        char tiroColuna;//0-9
+        BemVinda.darBemVinda();//metodo de clase abtracta
+        System.out.println("      1  -  COMEÇAR        Qualquer tecla  -  SAIR");
+        opcao = input.next();
+        if (opcao.equals("1")) {
+            System.out.println("Qual é seu nome?:");
+            String nomeDoJogador = input.next();
+            TabuleiroComputador computador = new TabuleiroComputador();
+            TabuleiroHumano humano = new TabuleiroHumano(nomeDoJogador);
 
-    Scanner input = new Scanner(System.in);
-    Random random = new Random();
+            opcao = "X";//para que entre no while
+            while (!(opcao.equals("1") || opcao.equals("2"))) {
 
-    public void iniciarCombate() {
-        //obterNomeDosJogadores();
-        posicionarNavios();
-        //verificarTiro();
-
-    }
-
-//    public void obterNomeDosJogadores() {
-//        System.out.println("Qual é o seu nome? ");
-//        humano.setNomeDoJogador(input.next());
-//        computador.setNomeDoJogador("computador");
-//    }
+                System.out.println("Quer posicionar seus navios:");
+                System.out.println("Opção 1-Aleatorio");
+                System.out.println("Opção 2-Manual");
+                opcao = input.next();
 //
-    public void posicionarNavios() {
-        System.out.println("Como deseja posicionar seus navios? ");
-        System.out.println("Opção 1 - Aleatório");
-        System.out.println("Opção 2 - Manual");
-        int opcao = input.nextInt();
-
-        if (opcao == 1) {
-            posicionarNaviosAleatoriamente();
-        } else if (opcao == 2) {
-            posicionarNaviosComJogador();
-        } else {
-            System.out.println("Escolha apenas uma das opções disponíveis.");
-        }
-
-    }
-
-    public static char[][] posicionarNaviosAleatoriamente() {
-        char[][] novoTabuleiro = Tabuleiro.gerarTabuleiroVazio();
-        int quantidadeDeNavios = 10;
-        int linha = 0;
-        int coluna= 0;
-        Random numeroAleatorio = new Random();
-        for (int navio = 0; navio <10; navio++){
-            linha = 0 + numeroAleatorio.nextInt((9 - 0) + 1);
-            coluna = 0 + numeroAleatorio.nextInt((9 - 0) + 1);
-            novoTabuleiro[linha][coluna] = 'N';
-        }
-        return novoTabuleiro;
-    }
-
-    public void posicionarNaviosComJogador() {
-        boolean inputLinha = false;
-        boolean inputColuna = false;
-        char linhaDoTabuleiro = 'k';
-        char colunaDoTabuleiro = 'k';
-        for (int navio = 0; navio <10; navio++){
-            while (linhaDoTabuleiro >= 'A' || linhaDoTabuleiro <= 'J'){
-                if (inputLinha) {
-                    System.out.println("Informe a linha desejada entre as letras A e J.");
-                }
-                System.out.println("Informe a linha para atirar: A-J");
-                linhaDoTabuleiro = input.next().charAt(0);
-                inputLinha = true;
             }
-            while (colunaDoTabuleiro >= '0' || colunaDoTabuleiro <= '9'){
-                if (inputColuna) {
-                    System.out.println("Informe a coluna desejada entre os números 0 e 9.");
-                }
-                System.out.println("Informe a coluna para atirar: 0-9");
-                colunaDoTabuleiro = input.next().charAt(0);
-                inputColuna = true;
+            ;
+
+
+            computador.gerarTabuleiroAleatorio();
+           // computador.exibirTabuleiro(computador.getNome());
+            if (opcao.equals("1")){
+                humano.gerarTabuleiroAleatorio();
+            }else{
+                humano.gerarTabuleiroManual();
             }
+            // começo do jogo
+            computador.exibirTabuleiro(computador.getNome());/**/
+            humano.exibirTabuleiro(humano.getNome());
+            do {
+                do {//obter e validar tiro fila
+                    System.out.println("Em que fila deseja Atirar?(só valores entre A-J):");
+                    tiroFila = input.next().charAt(0);
+
+                    //mensagem para quando no seja valido
+                }while (tiroFila < 65 || tiroFila>74);
+
+                do {//obter e validar tiro fila
+                    System.out.println("Em que coluna deseja Atirar?(só valores entre 0-9):");
+                    tiroColuna = input.next().charAt(0);
+                    //mensagem para quando no seja valido
+                }while (tiroColuna < 0 || tiroColuna>74);
+
+            humano.verificarTiro(tiroFila, tiroColuna,computador);//computador
+            computador.verificarTiro(humano);
+            humano.exibirTabuleiro(humano.getNome());
+            //computador.exibirTabuleiro(computador.getNome());
+                System.out.printf("%s tem %d,  %s tem %d %n", humano.getNome(), humano.getNavios(), computador.getNome(),
+                        computador.getNavios());
+            }while (humano.getNavios()>0 && computador.getNavios()>0);
+//exibir os dois tabuleiros
+            humano.exibirTabuleiro(humano.getNome());
+            computador.exibirTabuleiro(computador.getNome());
+            String ganhador= Ganhador.verificarGanhador(humano, computador);
+            System.out.printf("O Ganhador é %s ficou con %d navio(s)", ganhador, ganhador.equals(humano.getNome())?
+                    humano.getNavios():computador.getNavios());
         }
     }
-
-    public void verificarTiro(){
-
-    }
-
 }

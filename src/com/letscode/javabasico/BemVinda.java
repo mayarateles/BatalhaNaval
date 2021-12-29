@@ -1,11 +1,8 @@
 package com.letscode.javabasico;
 
-import java.util.Scanner;
+public  abstract class BemVinda {
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
+    public static void darBemVinda(){
         System.out.println("______       ____   ________    ____      ___    ____     ___     ____");
         System.out.println("|     )     / /\\ \\  |__   __|  / /\\ \\    |   |   |   |   |   |   / /\\ \\ ");
         System.out.println("----         ---       |  |      --      |   |   |   |===|   |    ---");
@@ -16,19 +13,5 @@ public class Main {
         System.out.println("|   |\\\\ |   |    ---      \\ \\  / /     ---     |   |");
         System.out.println("|___| \\\\ ___| /_/    \\_\\   \\_\\/_/  / /    \\ \\  |___|");
         System.out.println();
-
-        System.out.println("      1  -  COMEÇAR        2  -  SAIR");
-        int opcao = input.nextInt();
-
-        if (opcao == 1) {
-            Combate combate = new Combate();
-            combate.iniciarCombate();
-        } else if (opcao == 2) {
-            System.out.println("Espero revê-lo em breve.");
-        } else {
-            System.out.println("Você deve digitar uma das opções disponíveis!");
-        }
-
-        input.close();
     }
 }
