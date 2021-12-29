@@ -41,21 +41,27 @@ public class TabuleiroHumano {
         Scanner input = new Scanner(System.in);
         int posicao =0;
         boolean exit;
+        String validar;
         char letraDaLinha = 65;
         for (int i = 0; i < NAVIOS ; i++) {
             System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
-            posicao = input.nextInt();
+            validar = input.next();
+                if(!validar.matches("[0-9]*")) {
+                	System.out.println("Por favor, insira um n�mero v�lido.");
+                	validar = "";
+                }else {
+                	posicao = Integer.parseInt(validar);
+                	do {
 
-            do {
-
-                if (posicao < 0 || posicao > 9) {
-                    System.out.println("posição não valida");
-                    System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
-                    posicao = input.nextInt();
+                        if (posicao < 0 || posicao > 9) {
+                            System.out.println("posição não valida");
+                            System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+                            posicao = input.nextInt();
+                        }
+                    }while (posicao < 0 || posicao > 9);
+                    tabuleiroHumano[i][posicao] = 'N';
+                    letraDaLinha++;
                 }
-            }while (posicao < 0 || posicao > 9);
-            tabuleiroHumano[i][posicao] = 'N';
-            letraDaLinha++;
         }
         input.close();
     }

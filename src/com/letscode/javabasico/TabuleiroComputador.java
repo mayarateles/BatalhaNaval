@@ -34,7 +34,7 @@ public class TabuleiroComputador {
         gerarTabuleiroVazio();
         for (int i = 0; i < NAVIOS ; i++) {
 
-            tabuleiroComputador[i][aleatorio.nextInt(10)]='N';
+            tabuleiroComputador[aleatorio.nextInt(10)][aleatorio.nextInt(10)]='N';
         }
     }
     public void gerarTabuleiroManual() {
@@ -42,12 +42,21 @@ public class TabuleiroComputador {
         Scanner input = new Scanner(System.in);
         int posicao =0;
         boolean exit;
+        String validar;
         char letraDaLinha = 65;
         for (int i = 0; i < NAVIOS ; i++) {//ainda pode dar error con string
             System.out.printf("EM qual posiÃ§Ã£o da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
-            posicao = input.nextInt();
-            tabuleiroComputador[i][posicao]='N';
-            letraDaLinha++;
+            validar = input.next();
+            System.out.print(validar);
+            if(!validar.matches("[0-9]*")) {
+            	System.out.print("Por favor, insira um número válido.");
+            	validar = "";
+            }else {
+            	posicao = Integer.parseInt(validar);
+            	tabuleiroComputador[i][posicao]='N';
+            	letraDaLinha++;
+            }
+            
         }
         input.close();
     }
