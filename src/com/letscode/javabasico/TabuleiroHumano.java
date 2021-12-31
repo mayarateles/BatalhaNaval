@@ -45,7 +45,7 @@ public class TabuleiroHumano {
         String validar;
         char letraDaLinha = 65;
         for (int i = 0; i < NAVIOS ; i++) {
-            System.out.printf("EM qual posi√ß√£o da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+            System.out.printf("EM qual posiÁ„o da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
             validar = input.next();
                 if(!validar.matches("[0-9]*")) {
                 	System.out.println("-----Por favor, insira um n˙mero v·lido.-----");
@@ -55,8 +55,8 @@ public class TabuleiroHumano {
                 	do {
 
                         if (posicao < 0 || posicao > 9) {
-                            System.out.println("posi√ß√£o n√£o valida");
-                            System.out.printf("Em qual posi√ß√£o da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+                            System.out.println("posiÁ„o n√£o valida");
+                            System.out.printf("Em qual posiÁ„o da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
                             posicao = input.nextInt();
                         }
                     }while (posicao < 0 || posicao > 9);
@@ -64,7 +64,7 @@ public class TabuleiroHumano {
                     letraDaLinha++;
                 }
         }
-        input.close();
+        //input.close();
     }
     public void exibirTabuleiro(String nomeDoJogador){
         System.out.println("|----------------- " + nomeDoJogador + " ----------------|");

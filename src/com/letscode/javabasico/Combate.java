@@ -43,7 +43,8 @@ public class Combate {
             do {
                 do {//obter e validar tiro fila
                     System.out.println("Em que fila deseja Atirar?(só valores entre A-J):");
-                    tiroFila = input.next().charAt(0);
+
+                    tiroFila = input.next().charAt(0);//.charAt(0)
 
                     //mensagem para quando no seja valido
                 }while (!(tiroFila >= 65 && tiroFila <= 74) && !(tiroFila <= 106 && tiroFila >= 97));
@@ -66,7 +67,7 @@ public class Combate {
             computador.exibirTabuleiro(computador.getNome());
             String ganhador= Ganhador.verificarGanhador(humano, computador);
             System.out.printf("O Ganhador é %s ficou con %d navio(s)", ganhador, ganhador.equals(humano.getNome())?
-                    humano.getNavios():computador.getNavios());
+                    humano.getNavios(): computador.getNavios());
         }
     }
 }
