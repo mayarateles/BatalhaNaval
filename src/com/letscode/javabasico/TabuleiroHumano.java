@@ -91,13 +91,13 @@ public class TabuleiroHumano {
                         break;
 
                     case ACERTOU_TIRO :
-                        linhaDoTabuleiro += " * |";
+                        linhaDoTabuleiro += green+" * "+resetColor+"|";
                         break;
                     case ACERTOU_TIRO_NAVIO_POSICIONADO:
-                        linhaDoTabuleiro += " X |";
+                        linhaDoTabuleiro += green + " X "+resetColor+"|";
                         break;
                     case ERROU_TIRO_NAVIO_POSICIONADO:
-                        linhaDoTabuleiro += " n |";
+                        linhaDoTabuleiro += red + " n "+resetColor+"|";
                         break;
                 }
             }
