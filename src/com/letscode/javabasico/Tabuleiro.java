@@ -5,25 +5,27 @@ import java.util.Scanner;
 
 import static com.letscode.javabasico.Constantes.*;
 
-public class TabuleiroHumano {
-    public final char[][] tabuleiroHumano;/*Ou private*/
+public class Tabuleiro {
+    public final char[][] tabuleiro;
     public int navios;
     private String nome;
 
     Random aleatorio = new Random();
 
-    public TabuleiroHumano(String nome) {
-        this.tabuleiroHumano = new char[NAVIOS][NAVIOS];;
+    public Tabuleiro() {
+        this.tabuleiro = new char[NAVIOS][NAVIOS];
+        this.navios = NAVIOS;
         this.nome = nome;
-        this.navios= NAVIOS;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void gerarTabuleiroVazio(){
         for (int i=0; i <NAVIOS;i++) {
             for (int j = 0; j < NAVIOS; j++) {
-                tabuleiroHumano[i][j]=20;
+                tabuleiro[i][j]=20;
             }
 
         }
@@ -33,7 +35,7 @@ public class TabuleiroHumano {
         gerarTabuleiroVazio();
         for (int i = 0; i < NAVIOS ; i++) {
 
-            tabuleiroHumano[i][aleatorio.nextInt(10)]='N';
+            tabuleiro[i][aleatorio.nextInt(10)]='N';
         }
     }
 
@@ -45,36 +47,31 @@ public class TabuleiroHumano {
         String validar;
         char letraDaLinha = 65;
         for (int i = 0; i < NAVIOS ; i++) {
-            System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+            System.out.printf("Em qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
             validar = input.next();
+            System.out.print(validar);
             if(!validar.matches("[0-9]*")) {
-                System.out.println("-----Por favor, insira um número válido.-----");
+                System.out.print("-----Por favor, insira um número válido.-----");
                 validar = "";
             }else {
                 posicao = Integer.parseInt(validar);
-                do {
-
-                    if (posicao < 0 || posicao > 9) {
-                        System.out.println("posição nÃ£o valida");
-                        System.out.printf("Em qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
-                        posicao = input.nextInt();
-                    }
-                }while (posicao < 0 || posicao > 9);
-                tabuleiroHumano[i][posicao] = 'N';
+                tabuleiro[i][posicao]='N';
                 letraDaLinha++;
             }
+
         }
-        //input.close();
+        input.close();
     }
+
     public void exibirTabuleiro(String nomeDoJogador){
-        System.out.println("|----------------- " + nomeDoJogador + " ----------------|");
+        System.out.println("|---------------- " + nomeDoJogador + " ----------------|");
         System.out.println("---------------------------------------------");
         System.out.println("|   | 0  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
         System.out.println("---------------------------------------------");
         char letraDaLinha = 65;
         String linhaDoTabuleiro = "";
 
-        for (char[] linha: tabuleiroHumano) {
+        for (char[] linha: tabuleiro) {
             linhaDoTabuleiro = "| "+(letraDaLinha++) + " | ";
 
             for (char coluna : linha) {
@@ -91,13 +88,13 @@ public class TabuleiroHumano {
                         break;
 
                     case ACERTOU_TIRO :
-                        linhaDoTabuleiro += green+" * "+resetColor+"|";
+                        linhaDoTabuleiro += " * |";
                         break;
                     case ACERTOU_TIRO_NAVIO_POSICIONADO:
-                        linhaDoTabuleiro += green + " X "+resetColor+"|";
+                        linhaDoTabuleiro += " X |";
                         break;
                     case ERROU_TIRO_NAVIO_POSICIONADO:
-                        linhaDoTabuleiro += red + " n "+resetColor+"|";
+                        linhaDoTabuleiro += " n |";
                         break;
                 }
             }
@@ -110,34 +107,18 @@ public class TabuleiroHumano {
     public int getNavios() {
         return navios;
     }
+
     public void restar(){
         navios--;
-
+        // System.out.println(getNavios());
     }
-    public void verificarTiro(int fila, int coluna, TabuleiroComputador computador){//
-        if(fila >= 65 && fila <= 74) {
-            fila -= 65;
-        }else {
-            fila -= 97;
+
+    public void verificarTiro(TabuleiroHumano humano){
+        int fila = aleatorio.nextInt(10);
+        int coluna = aleatorio.nextInt(10);
+        if (humano.tabuleiroHumano[fila][coluna]==NAVIO || humano.tabuleiroHumano[fila][coluna]==ERROU_TIRO_NAVIO_POSICIONADO){
+            humano.restar();
         }
-        coluna -= 48;
-
-        if (computador.tabuleiro[fila][coluna]==NAVIO){
-            if (tabuleiroHumano[fila][coluna]==NAVIO){
-                tabuleiroHumano[fila][coluna] = ACERTOU_TIRO_NAVIO_POSICIONADO;
-            }else{
-                tabuleiroHumano[fila][coluna] = ACERTOU_TIRO;
-            }
-            computador.tabuleiro[fila][coluna] = ACERTOU_TIRO;
-            computador.restar();
-
-        }else {
-            if (tabuleiroHumano[fila][coluna]==NAVIO){
-                tabuleiroHumano[fila][coluna]=ERROU_TIRO_NAVIO_POSICIONADO;
-            }else{
-                tabuleiroHumano[fila][coluna] = ERROU_TIRO;
-            }
-        }
-
     }
+
 }

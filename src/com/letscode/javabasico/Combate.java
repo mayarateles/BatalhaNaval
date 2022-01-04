@@ -18,20 +18,17 @@ public class Combate {
             TabuleiroComputador computador = new TabuleiroComputador();
             TabuleiroHumano humano = new TabuleiroHumano(nomeDoJogador);
 
-            opcao = "X";//para que entre no while
-            while (!(opcao.equals("1") || opcao.equals("2"))) {
-
+            do {
                 System.out.println("Quer posicionar seus navios:");
                 System.out.println("Opção 1-Aleatorio");
                 System.out.println("Opção 2-Manual");
                 opcao = input.next();
-//
-            }
-            ;
+
+            } while (!(opcao.equals("1") || opcao.equals("2")));
 
 
             computador.gerarTabuleiroAleatorio();
-           // computador.exibirTabuleiro(computador.getNome());
+            //computador.exibirTabuleiro(computador.getNome());
             if (opcao.equals("1")){
                 humano.gerarTabuleiroAleatorio();
             }else{
@@ -55,7 +52,7 @@ public class Combate {
                     //mensagem para quando no seja valido
                 }while (tiroColuna < 0 || tiroColuna>74);
 
-            humano.verificarTiro(tiroFila, tiroColuna,computador);//computador
+            humano.verificarTiro(tiroFila, tiroColuna, computador);//computador
             computador.verificarTiro(humano);
             humano.exibirTabuleiro(humano.getNome());
             //computador.exibirTabuleiro(computador.getNome());
