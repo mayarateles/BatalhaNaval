@@ -16,8 +16,8 @@ public abstract class Tabuleiro {
     }
 
     public void gerarTabuleiroVazio(){
-        for (int i=0; i <NAVIOS;i++) {
-            for (int j = 0; j < NAVIOS; j++) {
+        for (int i=0; i <TAMANHO_TABULEIRO;i++) {
+            for (int j = 0; j < TAMANHO_TABULEIRO; j++) {
                 tabuleiro[i][j]=20;
             }
         }

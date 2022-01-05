@@ -7,7 +7,7 @@ import static com.letscode.javabasico.Constantes.*;
 public class TabuleiroHumano extends Tabuleiro{
 
     public TabuleiroHumano(String nome) {
-        super.tabuleiro = new char[NAVIOS][NAVIOS];
+        super.tabuleiro = new char[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
         super.navios = NAVIOS;
         super.nome = nome;
     }

@@ -6,7 +6,7 @@ import static com.letscode.javabasico.Constantes.ERROU_TIRO_NAVIO_POSICIONADO;
 public class TabuleiroComputador extends Tabuleiro {
 
     public TabuleiroComputador() {
-        super.tabuleiro = new char[NAVIOS][NAVIOS];
+        super.tabuleiro = new char[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
         super.navios = NAVIOS;
         super.nome = NOMEDOCOMPUTADOR;
     }
