@@ -69,7 +69,7 @@ public class TabuleiroHumano extends Tabuleiro{
     }
 
     public void exibirTabuleiro(String nomeDoJogador){
-        System.out.println("|----------------- " + nomeDoJogador + " ----------------|");
+        System.out.println("|----------------- " + nomeDoJogador.toUpperCase() + " ----------------|");
         System.out.println("---------------------------------------------");
         System.out.println("|   | 0  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |");
         System.out.println("---------------------------------------------");
