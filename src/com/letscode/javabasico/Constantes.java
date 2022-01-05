@@ -12,4 +12,5 @@ public class Constantes {
     static final String resetColor="\u001B[0m";
     static final String blue="\033[34m";
     static final String green="\033[32m";
+    static final String NOMEDOCOMPUTADOR = "Computador";
 }

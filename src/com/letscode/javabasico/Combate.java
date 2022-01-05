@@ -13,13 +13,13 @@ public class Combate {
         System.out.println("      1  -  COMEÇAR        Qualquer tecla  -  SAIR");
         opcao = input.next();
         if (opcao.equals("1")) {
-            System.out.println("Qual é seu nome?:");
+            System.out.println("Qual é seu nome?");
             String nomeDoJogador = input.next();
             TabuleiroComputador computador = new TabuleiroComputador();
             TabuleiroHumano humano = new TabuleiroHumano(nomeDoJogador);
 
             do {
-                System.out.println("Quer posicionar seus navios:");
+                System.out.println("Como deseja posicionar seus navios?");
                 System.out.println("Opção 1-Aleatorio");
                 System.out.println("Opção 2-Manual");
                 opcao = input.next();
@@ -35,7 +35,7 @@ public class Combate {
                 humano.gerarTabuleiroManual();
             }
             // começo do jogo
-            computador.exibirTabuleiro(computador.getNome());/**/
+            computador.exibirTabuleiro(computador.nome);/**/
             humano.exibirTabuleiro(humano.getNome());
             do {
                 do {//obter e validar tiro fila
