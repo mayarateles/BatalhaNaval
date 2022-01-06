@@ -19,24 +19,18 @@ public class TabuleiroHumano extends Tabuleiro{
         String validar;
         char letraDaLinha = 65;
         for (int i = 0; i < NAVIOS ; i++) {
-            System.out.printf("EM qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+            System.out.printf("Em qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
             validar = input.next();
-            if(!validar.matches("[0-9]*")) {
-                System.out.println("-----Por favor, insira um número válido.-----");
-                validar = "";
-            }else {
-                posicao = Integer.parseInt(validar);
-                do {
 
-                    if (posicao < 0 || posicao > 9) {
-                        System.out.println("posição nÃ£o valida");
-                        System.out.printf("Em qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
-                        posicao = input.nextInt();
-                    }
-                }while (posicao < 0 || posicao > 9);
-                tabuleiro[i][posicao] = 'N';
-                letraDaLinha++;
+            while (!validar.matches("[0-9]")){
+                System.out.println("----- Por favor, insira um número inteiro positivo entre 0 e 9 -----");
+                System.out.printf("Em qual posição da linha %c quer colocar o Navio(0-9): ", letraDaLinha);
+                validar = input.next();
             }
+            posicao = Integer.parseInt(validar);
+            tabuleiro[i][posicao] = 'N';
+            letraDaLinha++;
+
         }
     }
 
