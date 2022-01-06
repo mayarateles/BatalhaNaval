@@ -1,7 +1,9 @@
-/out/
+.project
 .idea
 .classpath
 *.iml
+/out/
+bin/
 /bin/
 /shelf/
 /workspace.xml
@@ -10,4 +12,3 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-.project
