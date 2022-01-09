@@ -1,7 +1,7 @@
 package com.letscode.javabasico;
 
 import java.util.Scanner;
-
+import static com.letscode.javabasico.Constantes.*;
 public class Combate {
 
     public static void main(String[] args) {
@@ -38,6 +38,8 @@ public class Combate {
             computador.exibirTabuleiro(computador.nome);/**/
             humano.exibirTabuleiro(humano.getNome());
             do {
+                System.out.println("Lenda de símbolos: N = Navio, n = Erro Tiro com Navio Posicionado");
+                System.out.println("X = Acertou tiro com Navio posicionado, * = Acertou tiro,  - = erro Tiro");
                 do {//obter e validar tiro fila
                     System.out.println("Em que fila deseja Atirar?(só valores entre A-J):");
 
@@ -56,13 +58,16 @@ public class Combate {
             computador.verificarTiro(humano);
             humano.exibirTabuleiro(humano.getNome());
             //computador.exibirTabuleiro(computador.getNome());
-                System.out.printf("%s tem %d,  %s tem %d %n", humano.getNome(), humano.getNavios(), computador.getNome(),
-                        computador.getNavios());
+
+                System.out.printf("%s tem %s %d %sNavio(s),  %s tem %s %d %s  Navio(s) %n", humano.getNome(),green,
+                        humano.getNavios(),resetColor, computador.getNome(), green,
+                        computador.getNavios(), resetColor);
             }while (humano.getNavios()>0 && computador.getNavios()>0);
 //exibir os dois tabuleiros
             humano.exibirTabuleiro(humano.getNome());
             computador.exibirTabuleiro(computador.getNome());
             String ganhador= Ganhador.verificarGanhador(humano, computador);
+
             System.out.printf("O Ganhador é %s ficou con %d navio(s)", ganhador, ganhador.equals(humano.getNome())?
                     humano.getNavios(): computador.getNavios());
         }
